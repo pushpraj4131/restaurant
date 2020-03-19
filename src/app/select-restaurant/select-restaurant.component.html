@@ -1,0 +1,36 @@
+<header id="header">
+	<div class="intro">
+		<div class="overlay">
+			<div class="container">
+				<div class="row">
+					<div class="intro-text">
+						<h1>FoodWoodz Restaurant</h1>
+						<p>Reservations: 9898989898</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div id="restaurant-menu">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+				<div class="menu-section">
+					<h2 class="menu-section-title">Select Restaurant</h2>
+					<div class="menu-item  custom-hover" *ngFor="let rest of allRestaurant">
+						<div class="menu-item-name " [routerLink]="['home', rest._id]" style="text-align: center">{{rest.restaurantName}}	</div>
+						<!-- <div class="menu-item-price"> $9 </div> -->
+						<div class="menu-item-description" style="text-align: center; width: 100%"> {{rest.address}} - {{rest.contactNo}}</div>
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
