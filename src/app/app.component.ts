@@ -18,13 +18,15 @@ export class AppComponent implements OnInit{
 		this.userInfo = JSON.parse(localStorage.getItem("currentUser"));
 		this.loginService.isLoggedIn.subscribe((data) => {
 		console.log("userInfo ===>00", this.userInfo, data);
+
 			if(data === 'loggedIn') {
 				this.userInfo = JSON.parse(localStorage.getItem("currentUser"));
 			}
 		});
-		this.loginService.getFlag().subscribe((data) => {
+		this.loginService.getFlag().subscribe((data:any) => {
 			console.log("data ============>0", data)
-			this.noLogin = data
+			this.userInfo = data.currentUser
+			this.noLogin = data.flag
 			if(data != false){
 				this.router.navigate(['']);
 

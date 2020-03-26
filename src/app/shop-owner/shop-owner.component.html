@@ -17,56 +17,29 @@
 <div id="restaurant-menu">
   <div class="container">
     <div class="section-title text-center">
-      <h2>Menu</h2>
+      <h2>Menu</h2><br>
+      <button class="btn btn-primary" (click)="openModel()">Add Food item</button>
     </div>
+    <!-- <div class="section-title text-center">
+    </div> -->
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="menu-section">
           <h2 class="menu-section-title">Breakfast & Starters</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Tortellini Skewers</div>
-            <div class="menu-item-price"> $9 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Fried Ravioli</div>
-            <div class="menu-item-price"> $7 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Wild Mushroom Arancini</div>
-            <div class="menu-item-price"> $9 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Mozzarella Sticks</div>
-            <div class="menu-item-price"> $10 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+          <div class="menu-item" *ngFor="let obj of foodArray.breakfastAndStarters">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="menu-section">
           <h2 class="menu-section-title">Main Course</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Roast Stuffed Chicken</div>
-            <div class="menu-item-price"> $18 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Chicken & Mushroom Pasta</div>
-            <div class="menu-item-price"> $20 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Beef Lasagne</div>
-            <div class="menu-item-price"> $14 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Chicken Goujons</div>
-            <div class="menu-item-price"> $19 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+          <div class="menu-item" *ngFor="let obj of foodArray.mainCourse">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
           </div>
         </div>
       </div>
@@ -74,51 +47,21 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="menu-section">
-          <h2 class="menu-section-title">Dinner</h2> <button>Add Dinner item</button>
-          <div class="menu-item">
-            <div class="menu-item-name">Sesame-Ginger Beef</div>
-            <div class="menu-item-price"> $15 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Crispy Fried Chicken</div>
-            <div class="menu-item-price"> $17 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Mongolian Shrimp & Broccoli</div>
-            <div class="menu-item-price"> $18 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam.. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Spicy Coconut Salmon</div>
-            <div class="menu-item-price"> $20 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+          <h2 class="menu-section-title">Dinner</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.dinner">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="menu-section">
           <h2 class="menu-section-title">Desserts</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Chocolate Mud Cake</div>
-            <div class="menu-item-price"> $11 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Bourbon-Pecan Tart</div>
-            <div class="menu-item-price"> $14 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Texas Sheet Cake</div>
-            <div class="menu-item-price"> $15 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Vanilla Cheesecake</div>
-            <div class="menu-item-price"> $18 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+          <div class="menu-item" *ngFor="let obj of foodArray.desserts">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
           </div>
         </div>
       </div>
@@ -126,3 +69,66 @@
   </div>
 </div>
 
+
+
+
+<div class="modal fade" id="myModal" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h4 class="modal-title">Add Item</h4>
+        <button type="button"  class="close btn-primary" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]="foodItem">
+            <div class="client-details">
+              <div class="row">
+
+                <div class="col-12">
+                  <label for="">Food Category</label>
+                  <div class="form-group">
+                    <select formControlName="foodCategory" name="foodCategory"  required class="form-control">
+                      <option disabled="true">Select Food Category</option>
+                      <option  value="breakfast and starters">BREAKFAST & STARTERS</option>
+                      <option value="main course">MAIN COURSE</option>
+                      <option value="dinner">DINNER</option>
+                      <option value="desserts">Desserts</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="">Food Name</label>
+                  <div class="form-group">
+                    <input type="text"  required formControlName="foodName" class="form-control" placeholder="Food Name">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="">Indredients</label>
+                  <div class="form-group">
+                    <input type="text"  id="indredients" required  formControlName="indredients" class="form-control" placeholder="Indredients">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="">Food Price</label>
+                  <div class="form-group">
+                    <input type="number"  id="price"  required formControlName="price"  class="form-control" placeholder="Food Price">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="">Time To Cook</label>
+                  <div class="form-group">
+                    <input type="number"   required formControlName="timeToCook" class="form-control" placeholder="Time to cook">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"  [disabled]="foodItem.invalid"  (click)="addItem(foodItem.value)" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

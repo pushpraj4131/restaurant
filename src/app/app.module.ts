@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SelectRestaurantComponent } from './select-restaurant/select-restaurant.component';
 import { ShopOwnerComponent } from './shop-owner/shop-owner.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -33,6 +34,7 @@ import { ShopOwnerComponent } from './shop-owner/shop-owner.component';
     HomePageComponent,
     SelectRestaurantComponent,
     ShopOwnerComponent,
+    CartComponent,
     
   ],
   imports: [

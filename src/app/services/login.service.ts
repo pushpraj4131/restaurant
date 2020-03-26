@@ -11,6 +11,7 @@ import { config } from '../congif'
 export class LoginService {
 	// data:any;
 	private subjectLogin = new Subject<any>();
+	
 	formData:any = new FormData();
 	isLoggedIn: EventEmitter<any> = new EventEmitter<any>();
 	private currentUserSubject: BehaviorSubject<any>;
@@ -30,6 +31,7 @@ export class LoginService {
 	}
 	getFlag(): Observable<any> {
 		return this.subjectLogin.asObservable();
+		
 	}
 
 	getCurrency(){
@@ -47,8 +49,8 @@ export class LoginService {
 				localStorage.setItem('currentUser', JSON.stringify(user));
 				this.isLoggedIn.emit('loggedIn');
 				this.currentUserSubject.next(user);
-				this.subjectLogin.next(true);
-
+				this.subjectLogin.next({flag: true, currentUser: user});
+				
 			}
 
 			return user;
@@ -62,8 +64,8 @@ export class LoginService {
 				localStorage.setItem('currentUser', JSON.stringify(user));
 				this.isLoggedIn.emit('loggedIn');
 				this.currentUserSubject.next(user);
+				this.subjectLogin.next({flag: true, currentUser: user});
 			}
-
 			return user;
 		}));	
 	}
@@ -91,6 +93,7 @@ export class LoginService {
 		    // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
      	this.currentUserSubject.next(null);
+     	this.subjectLogin.next({flag: true, currentUser: null});
      	
 	}
 

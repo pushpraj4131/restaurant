@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
 	shopLogin(loginCredentails){
 		console.log("loginCredentails ==>" , loginCredentails);
 		this._loginService.loginShop(loginCredentails).subscribe((res:any)=>{
+			this.router.navigate(['shop-owner', res._id]);	
 			this.isDisable = false;
 			
 			this.isError = false;
