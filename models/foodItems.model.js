@@ -16,7 +16,7 @@ var foodSchema = new Schema({
 	indredients: {
 		type: String,
 	},
-	userId : {
+	restaurantId : {
 		type: Schema.Types.ObjectId, 
 		ref: 'restaurant', 
 		required: true

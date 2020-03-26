@@ -25,6 +25,10 @@ var restaurantSchema = new Schema({
 	userRole: {
 		type: String,
 		default: 'shop'
+	},
+	resUniqueId: {
+		type: String,
+		default: 1234
 	}
 
 });

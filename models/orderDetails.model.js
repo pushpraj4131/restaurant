@@ -3,27 +3,35 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var orderSchema = new Schema({
-	accountCode: {
-		type: Number,
+	restaurantId : {
+		type: Schema.Types.ObjectId, 
+		ref: 'restaurant', 
 		required: true
-		
 	},
-	payvalue: {
-		type: String,
+	payValue: {
+		type: Number,
 		required: true
 	},
 	timeToCookFood: {
-		type: String,
+		type: Number,
 	},
 	userId : {
 		type: Schema.Types.ObjectId, 
 		ref: 'user', 
 		required: true
 	},
-	foodId: [{
-		type: Schema.Types.ObjectId, 
-		ref: 'food', 
-		required: true	
-	}]
+	foodId: [
+	{
+		_id: false,
+		foodId :  {
+			type: Schema.Types.ObjectId, 
+			ref: 'food', 
+			required: true	
+		},
+		totalItems: {
+			type: Number
+		}
+	}
+	]	
 });
 module.exports = mongoose.model('order' , orderSchema);
