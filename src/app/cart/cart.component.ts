@@ -3,6 +3,7 @@ import { Router, ActivatedRoute }  from '@angular/router';
 import { RestaurantService } from '../services/restaurant.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
+import Swal from 'sweetalert2'
 declare var $;
 @Component({
 	selector: 'app-cart',
@@ -95,8 +96,17 @@ export class CartComponent implements OnInit {
 		console.log("value of payment =======>", this.paymentForm.value);
 		this._restaurantService.addPaymentRecord(this.paymentForm.value).subscribe((res) => {
 			console.log("addded payment", res);
-			this.paymentInfo = res;
+			Swal.fire({
+				title: 'Success',
+				text: 'Payment Information Succesfully Registered',
+				icon: 'success',
+				confirmButtonText: 'Cool'
+			})
+			.then((result) => {
 			this.openOrderModel();
+
+			})
+			this.paymentInfo = res;
 		}, (err) => {
 			console.log("err in adding payment ==>", err);
 		})
@@ -112,6 +122,12 @@ export class CartComponent implements OnInit {
 		this.paymentConfromForm.updateValueAndValidity();
 		console.log("this.paymentConfromForm ==========+> ", this.paymentConfromForm);
 		this._restaurantService.addOrder(this.paymentConfromForm.value).subscribe((res) => {
+			Swal.fire({
+				title: 'Success',
+				text: 'Your order is Succesfully placed',
+				icon: 'success',
+				confirmButtonText: 'Cool'
+			});
 			console.log("res ====>", res);
 		}, (err) => {
 			console.log("err ===> " ,err);
@@ -299,8 +315,9 @@ export class CartComponent implements OnInit {
 							totalItems: eachFood.totalItems
 						}
 						obj.foodId.push(foodObj);
-						obj['payValue'] = +obj['payValue'] + ( Number(eachFood.foodId.timeToCook) * eachFood.totalItems )
+						obj['payValue'] = +obj['payValue'] + ( eachFood.foodId.price * eachFood.totalItems )
 						obj['timeToCookFood'] = +obj['timeToCookFood'] + ( Number(eachFood.foodId.timeToCook) * eachFood.totalItems )
+					console.log("each foood ========> ", eachFood);
 					});
 					console.log("obj ============>", obj);
 				}
@@ -313,6 +330,7 @@ export class CartComponent implements OnInit {
 						obj.foodId.push(foodObj);
 						obj['payValue'] = obj['payValue'] + ( eachFood.foodId.price * eachFood.totalItems )
 						obj['timeToCookFood'] = +obj['timeToCookFood'] + ( Number(eachFood.foodId.timeToCook) * eachFood.totalItems )
+						console.log("each foood ========> ", eachFood);
 					});
 					console.log("obj ============>", obj);
 				}
@@ -325,6 +343,7 @@ export class CartComponent implements OnInit {
 						obj.foodId.push(foodObj);
 						obj['payValue'] = obj['payValue'] + ( eachFood.foodId.price * eachFood.totalItems )
 						obj['timeToCookFood'] = +obj['timeToCookFood'] + ( Number(eachFood.foodId.timeToCook) * eachFood.totalItems )
+						console.log("each foood ========> ", eachFood);
 					});
 					console.log("obj ============>", obj);
 				}
@@ -337,6 +356,7 @@ export class CartComponent implements OnInit {
 						obj.foodId.push(foodObj);
 						obj['payValue'] = obj['payValue'] + ( eachFood.foodId.price * eachFood.totalItems )
 						obj['timeToCookFood'] = +obj['timeToCookFood'] + ( Number(eachFood.foodId.timeToCook) * eachFood.totalItems )
+						console.log("each foood ========> ", eachFood);
 					});
 					console.log("obj ============>", obj);
 				}

@@ -3,6 +3,9 @@ import { FormControl , FormGroup , Validators } from '@angular/forms'
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../services/login.service'
+
+import Swal from 'sweetalert2'
+
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
@@ -46,6 +49,13 @@ export class RegisterComponent implements OnInit {
 		console.log("register value ==+>", registerForm);
 		this._loginService.registerUser(registerForm).subscribe((res)=>{
 			console.log("response of user register", res);
+			Swal.fire({
+				title: 'Success',
+				text: 'Registered Succesfully',
+				icon: 'success',
+				confirmButtonText: 'Cool'
+			});
+			this.router.navigate(['login']);
 		}, (err)=>{
 			this.isError = true;
 			this.errorMessage = err.error;
@@ -56,6 +66,13 @@ export class RegisterComponent implements OnInit {
 	shopRegister(shopRegister){
 		this._loginService.registerShop(shopRegister).subscribe((res)=>{
 			console.log("response of shop register", res);
+			Swal.fire({
+				title: 'Success',
+				text: 'Registered Succesfully',
+				icon: 'success',
+				confirmButtonText: 'Cool'
+			});
+			this.router.navigate(['login']);
 		}, (err)=>{
 			this.isError = true;
 			this.errorMessage = err.error;
