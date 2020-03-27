@@ -44,7 +44,16 @@ orderService.addOrder = (body) => {
 				reject(err);
 			}
 			else{
-				resolve(savedOrder);
+				cartModel.populate(savedOrder, {path: "foodId.foodId restaurantId userId"}, function(err, populated){
+					if(err){
+						reject(err);
+					}
+					else{
+				// resolve(savedOrder);
+						resolve(populated);
+					}
+
+				});
 			}
 		});
 	});
