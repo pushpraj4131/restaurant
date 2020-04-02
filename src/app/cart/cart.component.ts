@@ -112,6 +112,7 @@ export class CartComponent implements OnInit {
 		})
 	}
 	orderFInal(value){
+		console.log("FInal order ============> ", this.finalOrderObject);
 		this.paymentConfromForm.patchValue({
 			userId: this.finalOrderObject.userId,
 			restaurantId: this.finalOrderObject.restaurantId,

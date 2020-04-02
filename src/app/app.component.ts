@@ -55,6 +55,14 @@ export class AppComponent implements OnInit {
 	viewProfile() {
 		this.router.navigate(['profile'], { queryParams: { userId: this.userInfo._id } });
 	}
+	myOrder(){
+		if(this.userInfo.userRole == 'shop'){
+					var body = {
+						restaurantId: this.userInfo._id
+					}
+				}
+		this.router.navigate(['order',  this.userInfo._id]);	
+	}
 	logout() {
 
 		this.loginService.logout();

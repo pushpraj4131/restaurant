@@ -7,6 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SelectRestaurantComponent } from './select-restaurant/select-restaurant.component';
 import { ShopOwnerComponent } from './shop-owner/shop-owner.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderComponent  } from './order/order.component';
 
 import { from } from 'rxjs';
 
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'cart/:id',
     component: CartComponent
+  },
+  {
+    path: 'order/:id',
+    component: OrderComponent
   }
 ];
 

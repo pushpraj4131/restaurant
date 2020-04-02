@@ -40,4 +40,7 @@ export class RestaurantService {
   addOrder(body){
     return this._http.post(config.baseApiUrl+'restaurant/add-order/', body);    
   }
+  getOrderById(body){
+    return this._http.post(config.baseApiUrl+'restaurant/get-order-by-id/', body);    
+  }
 }
