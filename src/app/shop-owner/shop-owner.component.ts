@@ -14,12 +14,14 @@ import Swal from 'sweetalert2'
 export class ShopOwnerComponent implements OnInit {
 	userId:any;
 	foodItem:FormGroup;
+	editFoodItem:FormGroup;
 	foodArray:any = {
 		"breakfastAndStarters": [],
 		"mainCourse": [],
 		"dinner": [],
 		"desserts": []
 	}
+
 	// foodItem = {
 	// 	foodCategory: "",
 	// 	foodName: "",
@@ -43,6 +45,15 @@ export class ShopOwnerComponent implements OnInit {
 			restaurantId: new FormControl('')
 
 		});
+		this.editFoodItem = new FormGroup({
+			foodCategory: new FormControl('', Validators.required),
+			foodName: new FormControl('', Validators.required),
+			indredients: new FormControl('', Validators.required),
+			price: new FormControl('', Validators.required),
+			timeToCook: new FormControl([], Validators.required),
+			restaurantId: new FormControl(''),
+			_id: new FormControl('')
+		});
 
 	}
 
@@ -60,6 +71,7 @@ export class ShopOwnerComponent implements OnInit {
 	getFoodItems(){
 		this._restaurantService.getRestaurantFoodById(this.userId).subscribe( async (res) => {
 			console.log("resposne ===>", res);
+			this.foodItem.reset();
 			this.foodArray = await this.formatFoodArray(res);
 			console.log("return ======>", this.foodArray);
 		}, (err) => {
@@ -78,6 +90,48 @@ export class ShopOwnerComponent implements OnInit {
 		}, (err) => {
 			console.log("error in newly added food items ====>", err);
 		});
+	}
+	editItem(item){
+		console.log("Food items ======>", item);
+		this._restaurantService.editFoodItem(item).subscribe((res) => {
+			console.log("res of edited food items ======>", res);
+			Swal.fire(
+						'EDITED!',
+						'Your food item has been edited .',
+						'success'
+						)
+			this.getFoodItems();
+		}, (err) => {
+			console.log("error in newly added food items ====>", err);
+		});
+	}
+	removeItem(id){
+		console.log("Food items ======>", id);
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		}).then((result) => {
+			if (result.value) {
+				this._restaurantService.deleteFoodItem(id).subscribe((res) => {
+					console.log("res of deelte food items ======>", res);
+					Swal.fire(
+						'Deleted!',
+						'Your food item has been deleted.',
+						'success'
+						)
+					this.getFoodItems();
+				}, (err) => {
+					console.log("error in deleted food items ====>", err);
+				});
+
+			}
+		})
+
 	}
 	formatFoodArray(data){
 		this.foodArray = {
@@ -102,4 +156,24 @@ export class ShopOwnerComponent implements OnInit {
 		});
 		return this.foodArray;
 	}
+	openEditModel(){
+		$('#myEditModal').modal('show');
+	}
+	
+	getFoodDetail(food){
+		console.log("food detail =====> ", food)
+		this.editFoodItem.patchValue({
+			foodCategory: food.foodCategory,
+			foodName: food.foodName,
+			indredients: food.indredients,
+			price: food.price,
+			timeToCook: food.timeToCook,
+			restaurantId: food.restaurantId,
+			_id: food._id
+		});
+		this.editFoodItem.updateValueAndValidity();
+		console.log("this.editFoodItem.updateValueAndValidity(); =====+> ", this.editFoodItem.value);
+		this.openEditModel();
+	}
+
 }

@@ -22,6 +22,13 @@ export class RestaurantService {
   addFoodItem(body){
   	return this._http.post(config.baseApiUrl+'restaurant/add-food-item/', body);	
   }
+  editFoodItem(body){
+    return this._http.post(config.baseApiUrl+'restaurant/edit-food-item-by-id', body)
+  }
+  deleteFoodItem(id){
+    return this._http.delete(config.baseApiUrl+'restaurant/delete-food-item-by-id/'+id);    
+  }
+
   getCartById(body){
     return this._http.post(config.baseApiUrl+'restaurant/get-cart-by-id/', body);      
   }
